@@ -1,6 +1,7 @@
 // cJvaax2bOh5lQHvK
 const express = require('express')
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+const { title } = require('process');
 
 
 
@@ -17,4 +18,14 @@ mongoose.connect(DB_HOST)
         console.log(error.message)
         process.exit(1)
     })
+
+app.get('/api/books', async (req, res) => {
+
+    const books = {
+        title: 'Generation Pi',
+        autor: 'Pelevin',
+    }
+    res.json(books);
+
+});
 
