@@ -6,7 +6,7 @@ const { getAllBooks } = require('./controller/bookController');
 const app = express();
 const { DB_HOST } = process.env;
 
-app.use(express.json());
+// app.use(express.json());
 
 app.get('/api/books', getAllBooks);
 
