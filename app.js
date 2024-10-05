@@ -1,14 +1,15 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const bookRoutes = require('./routes/bookRoutes');
 require('dotenv').config();
-const { getAllBooks } = require('./controller/bookController');
 
 const app = express();
 const { DB_HOST } = process.env;
 
-// app.use(express.json());
+app.use(express.json());
 
-app.get('/api/books', getAllBooks);
+app.use('/api/books', bookRoutes);
+
 
 mongoose.connect(DB_HOST)
     .then(() => {
@@ -21,3 +22,4 @@ mongoose.connect(DB_HOST)
         console.error('Error connecting to MongoDB:', error.message);
         process.exit(1);
     });
+
